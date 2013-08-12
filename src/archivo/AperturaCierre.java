@@ -6,8 +6,13 @@
 package archivo;
 
 //Importación Archivos.
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
+/**Clase para controla la apertura y cierre del archivo xml a leerse*/
 public class AperturaCierre {
 	
 	//Declaración de variables para manipular el archivo.
@@ -15,9 +20,8 @@ public class AperturaCierre {
 	private FileReader fr = null;
 	private BufferedReader br = null;
 	
-	
+	/**Metodo para abrir el archivo xml a ser leido*/
 	public BufferedReader abrirArchivo(){
-		
 		//Abrimos el archivo xml y procedemos a cargarlo en un BufferedReader
 		archivo = new File("/home/ichigo/Descargas/log20130430140719.xml");
 		try {
@@ -25,15 +29,18 @@ public class AperturaCierre {
 			br = new BufferedReader(fr);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
-		}finally{//Nos aseguramos de cerrar el fichero tanto si se ejecuta bien
-			     //la operación, así como si surgen errores.
+		}
+		return br;
+	}
+	
+	/**Cerramos el archivo xml*/
+	public BufferedReader cerrarArchivo(BufferedReader buffer){
 			try {
-				if(fr != null)
+				if(buffer != null)
 				fr.close();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		}
-		return br;
+		return buffer;
 	}
 }
