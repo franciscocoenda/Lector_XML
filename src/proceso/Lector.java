@@ -14,17 +14,17 @@ import org.jdom2.input.SAXBuilder;
 public class Lector {
 	
 	//Variables.
-	private static SAXBuilder builder; 
-	private static File xmlFile;
-	private static Document documento;
-	private static Element rootNode;
-	private static Element rootNode_Level2;
-	private static List<Element> lista;
+	private SAXBuilder builder; 
+	private File xmlFile;
+	private Document documento;
+	private Element rootNode;
+	private Element rootNode_Level2;
+	private List<Element> lista;
 	
 	
 	/**Metodo que muestra como leer el nivel 0 y 1 de un xml, extraer
 	 * los datos de éste y almacenarlos en una variable.*/
-	public static void ProcesarXML(String path) {
+	public void LeerPrimerNivel(String path) {
 
 
 		// Se crea un SAXBuilder para poder parsear el archivo
@@ -55,8 +55,10 @@ public class Lector {
 		} 
 	}
 	
-	
-	public static void ProceesarXML(String path){
+	/**Metodo que muestra como leer el niveles de mayor
+	 * profundidad  de un xml, extraer los datos de éste y 
+	 * almacenarlos en una variable.*/
+	public static void LeerMasNiveles(String path){
 		
 		
 		List list2;
