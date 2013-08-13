@@ -46,6 +46,8 @@ public class Lector {
 			// Obtengo los nodos "property" del tag info y los almaceno en
 			// una lista.
 			lista = rootNode_Level2.getChildren("property");
+			
+			System.out.println(lista);
 
 		} catch (IOException io) {
 			System.out.println(io.getMessage());
@@ -58,14 +60,26 @@ public class Lector {
 	/**Metodo que muestra como leer el niveles de mayor
 	 * profundidad  de un xml, extraer los datos de éste y 
 	 * almacenarlos en una variable.*/
-	public static void LeerMasNiveles(String path){
+	public void LeerMasNiveles(String path){
 		
-		
-		List list2;
+		// Se crea un SAXBuilder para poder parsear el archivo
+		builder = new SAXBuilder();
+		xmlFile = new File(path);
 
-		rootNode2 = rootNode.getChild("build");
-		if (rootNode2.getAttribute("error") != null) {
-			list2 = rootNode2.getChildren("target");
+		//Se parcea el archivo xml para crear el documento 
+		//que se va a tratar.
+		documento = (Document) builder.build(xmlFile);
+
+		// Se obtiene la raiz del documento. En este caso 'cruisecontrol'
+		rootNode = documento.getRootElement();
+		
+		// Obtengo el tag "build" como nodo raiz para poder trabajar 
+		// los tags de éste. Este tag cuenta con una profundidad mayor.
+		rootNode_Level2 = rootNode.getChild("build");
+		
+		
+		if (rootNode_Level2.getAttribute("error") != null) {
+			lista = rootNode_Level2.getChildren("target");
 			rootNode2 = (Element) list2.get(1);
 			list2 = rootNode2.getChildren("task");
 			rootNode2 = (Element) list2.get(1);
