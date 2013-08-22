@@ -23,7 +23,7 @@ public class AperturaCierre {
 	/**Metodo para abrir el archivo xml a ser leido*/
 	public BufferedReader abrirArchivo(){
 		//Abrimos el archivo xml y procedemos a cargarlo en un BufferedReader
-		archivo = new File("/home/ichigo/Descargas/log20130430140719.xml");
+		archivo = new File();
 		try {
 			fr = new FileReader(archivo);
 			br = new BufferedReader(fr);
