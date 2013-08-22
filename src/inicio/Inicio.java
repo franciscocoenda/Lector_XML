@@ -10,8 +10,8 @@ public class Inicio {
 
 	public static void main(String[] args) {
 		Lector arranque = new Lector();
-		arranque.LeerPrimerNivel();
-		//arranque.LeerMasNiveles();
+		//arranque.LeerPrimerNivel();
+		arranque.LeerMasNiveles();
 	}
 
 }

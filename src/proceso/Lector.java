@@ -2,6 +2,8 @@ package proceso;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.jdom2.Document;
@@ -23,7 +25,8 @@ public class Lector {
 	private Element rootNode_Level3;
 	private Element campo;
 	private String mensaje;
-	private String almacen[];
+	private ArrayList<String> almacen = new ArrayList<String>();
+	private Iterator<String> i;
 	private List<Element> lista;
 	private LeerPath path = new LeerPath();
 	
@@ -53,7 +56,7 @@ public class Lector {
 			// una lista.
 			lista = rootNode_Level2.getChildren("property");
 			
-			
+			//Imprimo por consola la lista.
 			for (int i = 0; i < lista.size(); i++){
 				System.out.println(((Element)lista.get(i)).getAttributeValue("value"));
 			}
@@ -104,23 +107,22 @@ public class Lector {
 			System.out.println(e.getMessage());
 		} 
 
-		
-		//lista = rootNode.getChildren();
-		almacen = new String[10];
-		//recorro la lista hasta el ante - último elemento y voy
-		// extrayendo los valores de esta almacenandolos en el 
-		//arreglo almacen.
+		//recorro la lista extrayendo los valores de esta y
+		//almacenandolos en el ArrayList almacen.
 		for (int i = 0; i < lista.size(); i++) {
 			campo = (Element) lista.get(i);
 			mensaje = campo.getAttributeValue("priority");
 			if (mensaje.equalsIgnoreCase("warn")) {
 				String nombre = campo.getValue();
-				if (i < 10) {
-					almacen[i] = nombre;
-				}
+				almacen.add(nombre);
 			}
 		}
-		
-		System.out.print(almacen);
+	
+		//Imprimo lo que contiene almacen
+		i = almacen.iterator();
+		while(i.hasNext()){
+			System.out.println(i.next());
+		}
+
 	}
 }	
