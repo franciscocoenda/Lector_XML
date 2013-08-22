@@ -24,11 +24,7 @@ public class AperturaCierre {
 	/**Metodo para abrir el archivo xml a ser leido*/
 	public BufferedReader abrirArchivo(){
 		//Abrimos el archivo xml y procedemos a cargarlo en un BufferedReader
-<<<<<<< HEAD
 		archivo = new File(lp.leerPath());
-=======
-		archivo = new File();
->>>>>>> 82f6126ac1ebb9a965cf0e2d80446c89098d6ab2
 		try {
 			fr = new FileReader(archivo);
 			br = new BufferedReader(fr);
